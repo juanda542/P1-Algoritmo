@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class SistemaRutaNorte {
     public static final int PASAJE = 800;
-
+    /// Los buses se identificar simplemente con un String puede ser patente o literalmetne BUS1 BUS2...
     private Queue<String> terminal;
     private HashMap<String, Parada> paradas;
     private HashMap<String, Linea> lineas;
