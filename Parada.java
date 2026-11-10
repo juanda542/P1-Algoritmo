@@ -3,7 +3,7 @@ public class Parada {
     private String nombre;
 
     public Parada(String codigo,String nombre){
-        this.codigo = nombre;
+        this.codigo = codigo;
         this.nombre = nombre;
     }
 
