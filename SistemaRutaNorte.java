@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class SistemaRutaNorte {
     public static final int PASAJE = 800;
 
-    private Queue<Bus> terminal;
+    private Queue<String> terminal;
     private HashMap<String, Parada> paradas;
     private HashMap<String, Linea> lineas;
     private HashMap<String,Tarjeta> tarjetas;
