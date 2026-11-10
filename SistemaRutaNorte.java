@@ -8,7 +8,7 @@ public class SistemaRutaNorte {
     private Queue<Bus> terminal;
     private HashMap<String, Parada> paradas;
     private HashMap<String, Linea> lineas;
-    private HashMap<String,Tarjetas> tarjetas;
+    private HashMap<String,Tarjeta> tarjetas;
 
     public SistemaRutaNorte (){
         this.paradas = new HashMap<>();
