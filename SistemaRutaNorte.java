@@ -20,7 +20,7 @@ public class SistemaRutaNorte {
     public void registrarParada(String codigo, String nombre) {
         if (!paradas.containsKey(codigo)) {
             paradas.put(codigo, new Parada(codigo, nombre));
-            System.out.println("-> Parada registrada: " + nombre);
+            System.out.println("Parada registrada: " + nombre);
         }
     }
 
