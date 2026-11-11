@@ -15,9 +15,19 @@ public class SistemaRutaNorte {
         this.lineas = new HashMap<>();
         this.tarjetas = new HashMap<>();
         this.terminal = new LinkedList<>();
-
+    }
+    // 1. Agregar una parada al sistema
+    public void registrarParada(String codigo, String nombre) {
+        if (!paradas.containsKey(codigo)) {
+            paradas.put(codigo, new Parada(codigo, nombre));
+            System.out.println("-> Parada registrada: " + nombre);
+        }
     }
 
+    // Buscar parada por código
+    public Parada buscarParada(String codigo) {
+        return paradas.get(codigo);
+    }
 
    
 
