@@ -9,13 +9,32 @@ public class Tarjeta {
 
     }
     
-
+    // Cobrar pasaje
     public boolean cobrarPasaje(int precio){
-
+        if (saldo >= precio) {
+            saldo -= precio;
+            return true; 
+        }
+        return false; 
     }
     
-    public boolean cargarSaldo (int cantidad){
+    
+    // Cargar saldo a la tarjeta
+    public boolean cargarSaldo(int cantidad){
+        if (cantidad > 0) {
+            saldo += cantidad;
+            return true;
+        }
+        return false;
+    }
+    
 
+    public int getSaldo() {
+        return saldo;
+    }
+
+    public String getId() {
+        return id;
     }
     
     
