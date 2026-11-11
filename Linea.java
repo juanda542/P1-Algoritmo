@@ -12,9 +12,9 @@ public class Linea {
     public void agregarParada(Parada parada, int indice) {
         if (indice >= 0 && indice <= paradas.size()) {
             paradas.add(indice, parada);
-            System.out.println("-> Parada '" + parada + "' agregada en la línea " + nombre);
+            System.out.println("Parada '" + parada + "' agregada en la línea " + nombre);
         } else {
-            System.out.println("-> Índice fuera de rango.");
+            System.out.println("Índice fuera de rango.");
         }
     }
 
@@ -22,10 +22,10 @@ public class Linea {
     public Parada eliminarParada(int indice) {
         if (indice >= 0 && indice < paradas.size()) {
             Parada eliminada = paradas.remove(indice);
-            System.out.println("-> Parada eliminada de la línea " + nombre);
+            System.out.println("Parada eliminada de la línea " + nombre);
             return eliminada;
         } else {
-            System.out.println("-> Índice inválido.");
+            System.out.println("Índice inválido.");
             return null;
         }
     }
