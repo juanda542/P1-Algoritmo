@@ -68,5 +68,18 @@ public class SistemaRutaNorte {
 
         return masConcurridas;
     }
+
+    public boolean encolarBus(String bus){
+        if(bus.isEmpty() || terminal.contains(bus)){
+            return false;
+        }
+        terminal.offer(bus);
+        return true;
+    }
+
+    public String desencolarBus(){
+        String bus = terminal.poll();
+        return bus;
+    }
  
 }
