@@ -30,15 +30,7 @@ public class SistemaRutaNorte {
         return paradas.get(codigo);
     }
 
-    public boolean registrarSubida(String codigo) {
-        Parada parada = paradas.get(codigo);
 
-        if (parada == null) {
-            return false;
-        }
-        parada.sumarSubida();
-        return true;
-    }
 
     public void mostrarSubidas() {
         for (Parada p : paradas.values()) {
@@ -69,17 +61,69 @@ public class SistemaRutaNorte {
         return masConcurridas;
     }
 
-    public boolean encolarBus(String bus){
-        if(bus.isEmpty() || terminal.contains(bus)){
-            return false;
-        }
+    public void encolarBus(String bus){
+        if(terminal.contains(bus)){
+            System.out.println("Error: el bus ya está en el terminal");  
+        }else{
         terminal.offer(bus);
-        return true;
+        System.out.println("Bus " + bus + " ingresó al terminal.");
+        }
     }
 
-    public String desencolarBus(){
+    public void desencolarBus(){
         String bus = terminal.poll();
-        return bus;
+        if (bus == null) {
+            System.out.println("No hay buses esperando en el terminal.");
+        }else{
+    System.out.println("Saliendo bus " + bus + " del terminal.");
+        }
     }
- 
-}
+    
+
+    public void crearTarjeta(String id) {
+        if(tarjetas.containsKey(id)){
+            System.out.println("Ya existe una tarjeta con el id: " + id);
+        }else{
+        tarjetas.put(id,new Tarjeta(id));
+        System.out.println("Tarjeta registrada: " + id);
+        }
+    }
+    
+
+    public void cargarSaldoTarjeta(String id,int monto){
+        Tarjeta tarjeta = tarjetas.get(id);
+        if (tarjeta == null){ // en caso de que no exista
+           System.out.println("La tarjeta " + id + " no existe.");
+        }else if (!tarjeta.cargarSaldo(monto)) { // esta condicion funciona pq el cargar saldo devuelve falso si el monto es <= 0
+        System.out.println("Monto inválido: debe ser mayor a 0.");      
+        }else{
+        System.out.println("Saldo cargado. Saldo actual de tarjeta " + id + ": $" + tarjeta.getSaldo());
+        }
+    }
+
+    public void consultarSaldoTarjeta(String id){
+        Tarjeta tarjeta = tarjetas.get(id);
+        if (tarjeta == null){  
+            System.out.println("La tarjeta " + id + " no existe.");
+        }else{
+            System.out.println("Saldo de tarjeta " + id + ": $" + tarjeta.getSaldo());
+        }
+    }
+
+    public void subirParada(String idTarjeta, String codigoParada) {
+        Tarjeta tarjeta = tarjetas.get(idTarjeta);
+        Parada parada = paradas.get(codigoParada);
+        if (tarjeta == null) {
+            System.out.println("Error: la tarjeta " + idTarjeta + " no existe.");
+        }else if (parada == null) {
+            System.out.println("Error: la parada " + codigoParada + " no existe.");
+        }else if (!tarjeta.cobrarPasaje(PASAJE)) {
+            System.out.println("Saldo insuficiente en " + idTarjeta + " $ " + tarjeta.getSaldo());
+        }else{
+            parada.sumarSubida();
+            System.out.println("Subida registrada en " + parada.getNombre() + ". Saldo restante: $" + tarjeta.getSaldo());
+        }
+    }
+
+  
+    }
