@@ -125,5 +125,38 @@ public class SistemaRutaNorte {
         }
     }
 
-  
+    public void registrarLinea(String codigo, String nombre) {
+        if (lineas.containsKey(codigo)) {
+            System.out.println("Error: ya existe una línea con el código " + codigo);
+        } else {
+            lineas.put(codigo, new Linea(codigo, nombre));
+            System.out.println("Línea registrada: " + nombre);
+        }
+    }
+
+    
+    public void agregarParadaALinea(String codigoLinea, String codigoParada) {
+        Linea linea = lineas.get(codigoLinea);
+        Parada parada = paradas.get(codigoParada);
+        
+        if (linea == null) {
+            System.out.println("Error: la línea " + codigoLinea + " no existe.");
+        }else if (parada == null) {
+            System.out.println("Error: la parada " + codigoParada + " no existe.");
+        }else {
+            linea.agregarParada(parada); 
+            System.out.println("Parada " + parada.getNombre() + " agregada a la línea " + linea.getNombre());
+        }
+    }
+
+    public void mostrarRecorridoLinea(String codigoLinea) {
+        Linea linea = lineas.get(codigoLinea);
+        if (linea == null) {
+            System.out.println("Error: la línea " + codigoLinea + " no existe.");
+        }else {
+            linea.mostrarRecorrido(); 
+        }
+    }
+
+    
     }
