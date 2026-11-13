@@ -172,7 +172,7 @@ public class SistemaRutaNorte {
     public void mostrarRecorridoLinea(String nombreLinea) {
         Linea linea = lineas.get(nombreLinea);
         if (linea == null) {
-            System.out.println("Error: la línea " + nombreLinea + " no existe.");
+            System.out.println("La línea " + nombreLinea + " no existe.");
         }else {
             linea.mostrarRecorrido(); 
         }
