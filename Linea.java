@@ -17,6 +17,10 @@ public class Linea {
             System.out.println("Índice fuera de rango.");
         }
     }
+    
+    public String getNombre() {
+        return nombre;
+    }
 
     //Eliminar parada por su índice
     public Parada eliminarParada(int indice) {
