@@ -23,6 +23,8 @@ public class Parada {
 
     public void sumarSubida(){
         subidas++;
+        System.out.println("Subida registrada en parada: " + nombre);
     }
+    
     
 }
