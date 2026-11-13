@@ -107,7 +107,7 @@ public class SistemaRutaNorte {
         if (tarjeta == null){  
             System.out.println("La tarjeta " + id + " no existe.");
         }else{
-            System.out.println("Saldo de tarjeta " + id + ": $" + tarjeta.getSaldo());
+            tarjeta.consultarSaldo();
         }
     }
 
@@ -169,10 +169,10 @@ public class SistemaRutaNorte {
     
     ///public void eliminarParadaDeLinea() {}
 
-    public void mostrarRecorridoLinea(String codigoLinea) {
-        Linea linea = lineas.get(codigoLinea);
+    public void mostrarRecorridoLinea(String nombreLinea) {
+        Linea linea = lineas.get(nombreLinea);
         if (linea == null) {
-            System.out.println("Error: la línea " + codigoLinea + " no existe.");
+            System.out.println("Error: la línea " + nombreLinea + " no existe.");
         }else {
             linea.mostrarRecorrido(); 
         }
