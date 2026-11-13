@@ -125,22 +125,22 @@ public class SistemaRutaNorte {
         }
     }
 
-    public void registrarLinea(String codigo, String nombre) {
-        if (lineas.containsKey(codigo)) {
-            System.out.println("Error: ya existe una línea con el código " + codigo);
+    public void registrarLinea(String nombre) {
+        if (lineas.containsKey(nombre)) {
+            System.out.println("Error: ya existe una línea llamada " + nombre);
         } else {
-            lineas.put(codigo, new Linea(codigo, nombre));
+            lineas.put(nombre, new Linea(nombre));
             System.out.println("Línea registrada: " + nombre);
         }
     }
 
     
-    public void agregarParadaALinea(String codigoLinea, String codigoParada) {
-        Linea linea = lineas.get(codigoLinea);
+    public void agregarParadaALinea(String nombreLinea, String codigoParada) {
+        Linea linea = lineas.get(nombreLinea);
         Parada parada = paradas.get(codigoParada);
         
         if (linea == null) {
-            System.out.println("Error: la línea " + codigoLinea + " no existe.");
+            System.out.println("Error: la línea " + nombreLinea + " no existe.");
         }else if (parada == null) {
             System.out.println("Error: la parada " + codigoParada + " no existe.");
         }else {
