@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class SistemaRutaNorte {
     public static final int PASAJE = 800;
-    /// Los buses se identificar simplemente con un String puede ser patente o literalmetne BUS1 BUS2...
+    /// Los buses se identificar simplemente con un String que representa la patente
     private Queue<String> terminal;
     private HashMap<String, Parada> paradas;
     private HashMap<String, Linea> lineas;
@@ -17,9 +17,14 @@ public class SistemaRutaNorte {
         this.tarjetas = new HashMap<>();
         this.terminal = new LinkedList<>();
     }
-    // Agregar una parada al sistema
+    
+    // Metodos paradas
+
+
     public void registrarParada(String codigo, String nombre) {
-        if (!paradas.containsKey(codigo)) {
+        if (paradas.containsKey(codigo)) {
+            System.out.println("Ya existe una parada con el código " + codigo);
+        }else{
             paradas.put(codigo, new Parada(codigo, nombre));
             System.out.println("Parada registrada: " + nombre);
         }
@@ -29,8 +34,6 @@ public class SistemaRutaNorte {
     public Parada buscarParada(String codigo) {
         return paradas.get(codigo);
     }
-
-
 
     public void mostrarSubidas() {
         for (Parada p : paradas.values()) {
@@ -56,26 +59,26 @@ public class SistemaRutaNorte {
         if (subidasMax == 0){
             return new ArrayList<>();
         }
-
-
         return masConcurridas;
     }
 
-    public void encolarBus(String bus){
-        if(terminal.contains(bus)){
-            System.out.println("Error: el bus ya está en el terminal");  
+    // Metodos Bus
+    
+    public void encolarBus(String patente){
+        if(terminal.contains(patente)){
+            System.out.println("El bus ya está en el terminal");  
         }else{
-        terminal.offer(bus);
-        System.out.println("Bus " + bus + " ingresó al terminal.");
+        terminal.offer(patente);
+        System.out.println("Bus de patente: " + patente + " ingresó al terminal.");
         }
     }
 
     public void desencolarBus(){
-        String bus = terminal.poll();
-        if (bus == null) {
+        String patente = terminal.poll();
+        if (patente == null) {
             System.out.println("No hay buses esperando en el terminal.");
         }else{
-    System.out.println("Saliendo bus " + bus + " del terminal.");
+    System.out.println("Saliendo bus de patente: " + patente + " del terminal.");
         }
     }
     
@@ -92,12 +95,10 @@ public class SistemaRutaNorte {
 
     public void cargarSaldoTarjeta(String id,int monto){
         Tarjeta tarjeta = tarjetas.get(id);
-        if (tarjeta == null){ // en caso de que no exista
+        if (tarjeta == null){ 
            System.out.println("La tarjeta " + id + " no existe.");
-        }else if (!tarjeta.cargarSaldo(monto)) { // esta condicion funciona pq el cargar saldo devuelve falso si el monto es <= 0
-        System.out.println("Monto inválido: debe ser mayor a 0.");      
         }else{
-        System.out.println("Saldo cargado. Saldo actual de tarjeta " + id + ": $" + tarjeta.getSaldo());
+            tarjeta.cargarSaldo(monto);
         }
     }
 
@@ -110,44 +111,63 @@ public class SistemaRutaNorte {
         }
     }
 
+    // Se utiliza el cobro del pasaje de una tarjeta para representar a la persona subiendose a la parada 
     public void subirParada(String idTarjeta, String codigoParada) {
+        
         Tarjeta tarjeta = tarjetas.get(idTarjeta);
         Parada parada = paradas.get(codigoParada);
+        
         if (tarjeta == null) {
-            System.out.println("Error: la tarjeta " + idTarjeta + " no existe.");
+            System.out.println("La tarjeta " + idTarjeta + " no existe.");
         }else if (parada == null) {
-            System.out.println("Error: la parada " + codigoParada + " no existe.");
-        }else if (!tarjeta.cobrarPasaje(PASAJE)) {
-            System.out.println("Saldo insuficiente en " + idTarjeta + " $ " + tarjeta.getSaldo());
-        }else{
+            System.out.println("La parada " + codigoParada + " no existe.");
+        }else if(tarjeta.cobrarPasaje(PASAJE)){
             parada.sumarSubida();
-            System.out.println("Subida registrada en " + parada.getNombre() + ". Saldo restante: $" + tarjeta.getSaldo());
         }
     }
 
+
+    // Metodos líneas
+    
     public void registrarLinea(String nombre) {
         if (lineas.containsKey(nombre)) {
-            System.out.println("Error: ya existe una línea llamada " + nombre);
+            System.out.println("Ya existe una línea llamada " + nombre);
         } else {
             lineas.put(nombre, new Linea(nombre));
             System.out.println("Línea registrada: " + nombre);
         }
     }
 
-    
+    // Agregar sin posición
     public void agregarParadaALinea(String nombreLinea, String codigoParada) {
         Linea linea = lineas.get(nombreLinea);
         Parada parada = paradas.get(codigoParada);
         
         if (linea == null) {
-            System.out.println("Error: la línea " + nombreLinea + " no existe.");
+            System.out.println("La línea " + nombreLinea + " no existe.");
         }else if (parada == null) {
-            System.out.println("Error: la parada " + codigoParada + " no existe.");
-        }else {
+            System.out.println("La parada " + codigoParada + " no existe.");
+        }else{
             linea.agregarParada(parada); 
-            System.out.println("Parada " + parada.getNombre() + " agregada a la línea " + linea.getNombre());
+
         }
     }
+    
+    // Agregar en posición
+    public void insertarParadaEnLinea(String nombreLinea, String codigoParada, int indice) {
+        Linea linea = lineas.get(nombreLinea);
+        Parada parada = paradas.get(codigoParada);
+        
+        if (linea == null) {
+            System.out.println("La línea " + nombreLinea + " no existe.");
+        } else if (parada == null) {
+            System.out.println("La parada " + codigoParada + " no existe.");
+        } else {
+            linea.insertarParada(parada, indice);
+        }
+    }
+    
+    ///public void eliminarParadaDeLinea() {}
 
     public void mostrarRecorridoLinea(String codigoLinea) {
         Linea linea = lineas.get(codigoLinea);
