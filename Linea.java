@@ -18,13 +18,21 @@ public class Linea {
         paradas.add(parada);
         System.out.println("Parada: " + parada.getNombre() + " agregada exitosamente en la línea: " + nombre);
     }
-    
+
+    public void insertarParada(Parada parada, int indice) {
+        if (indice >= 0 && indice <= paradas.size()) {
+            paradas.add(indice, parada);
+            System.out.println("Parada: " + parada.getNombre() + " agregada en la línea: " + nombre);
+        } else {
+            System.out.println("Índice fuera de rango.");
+        }
+    }
 
     //Eliminar parada por su índice
     public Parada eliminarParada(int indice) {
         if (indice >= 0 && indice < paradas.size()) {
             Parada eliminada = paradas.remove(indice);
-            System.out.println("Parada"+ eliminada.getNombre() + "eliminada de la línea " + nombre);
+            System.out.println("Parada "+ eliminada.getNombre() + " eliminada de la línea " + nombre);
             return eliminada;
         } else {
             System.out.println("Índice inválido.");
