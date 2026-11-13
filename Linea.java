@@ -47,7 +47,10 @@ public class Linea {
 
      // Mostrar el recorrido actual
     public void mostrarRecorrido() {
-        System.out.println("Recorrido de la línea " + nombre + ": " + paradas);
+        System.out.println("Recorrido de la línea " + nombre);
+        for (Parada p : paradas) {
+            System.out.println(p.getCodigo() + " " + p.getNombre());
+        }
     }
 
     
