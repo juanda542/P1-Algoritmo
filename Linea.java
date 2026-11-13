@@ -12,14 +12,11 @@ public class Linea {
      public String getNombre() {
         return nombre;
     }
+    
     //Agregar parada
-    public void agregarParada(Parada parada, int indice) {
-        if (indice >= 0 && indice <= paradas.size()) {
-            paradas.add(indice, parada);
-            System.out.println("Parada '" + parada.getNombre() + "' agregada en la línea " + nombre);
-        } else {
-            System.out.println("Índice fuera de rango.");
-        }
+    public void agregarParada(Parada parada) {
+        paradas.add(parada);
+        System.out.println("Parada: " + parada.getNombre() + " agregada exitosamente en la línea: " + nombre);
     }
     
 
