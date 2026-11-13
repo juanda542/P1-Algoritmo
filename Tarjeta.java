@@ -13,19 +13,24 @@ public class Tarjeta {
     public boolean cobrarPasaje(int precio){
         if (saldo >= precio) {
             saldo -= precio;
+            System.out.println("Pasaje cobrado a tarjeta:  " + id)
             return true; 
         }
+        System.out.println("Saldo insuficiente en tarjeta " + id + ": $" + saldo);
         return false; 
     }
     
-    
     // Cargar saldo a la tarjeta
-    public boolean cargarSaldo(int cantidad){
+    public void cargarSaldo(int cantidad){
         if (cantidad > 0) {
             saldo += cantidad;
-            return true;
-        }
-        return false;
+            System.out.println("Saldo cargado exitosamente. Saldo actual: $" + saldo);
+        }else{
+        System.out.println("Monto inválido: debe ser mayor a 0.");
+    }
+
+    public void consultarSaldo() {
+        System.out.println("Saldo de tarjeta: $ " + saldo);
     }
     
 
