@@ -9,25 +9,25 @@ public class Linea {
         this.paradas = new LinkedList<>();
     }
 
+     public String getNombre() {
+        return nombre;
+    }
     //Agregar parada
     public void agregarParada(Parada parada, int indice) {
         if (indice >= 0 && indice <= paradas.size()) {
             paradas.add(indice, parada);
-            System.out.println("Parada '" + parada + "' agregada en la línea " + nombre);
+            System.out.println("Parada '" + parada.getNombre() + "' agregada en la línea " + nombre);
         } else {
             System.out.println("Índice fuera de rango.");
         }
     }
     
-    public String getNombre() {
-        return nombre;
-    }
 
     //Eliminar parada por su índice
     public Parada eliminarParada(int indice) {
         if (indice >= 0 && indice < paradas.size()) {
             Parada eliminada = paradas.remove(indice);
-            System.out.println("Parada eliminada de la línea " + nombre);
+            System.out.println("Parada"+ eliminada.getNombre() + "eliminada de la línea " + nombre);
             return eliminada;
         } else {
             System.out.println("Índice inválido.");
