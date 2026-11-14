@@ -1,7 +1,7 @@
-import java.util.Queue;
-import java.util.LinkedList;
-import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class SistemaRutaNorte {
     public static final int PASAJE = 800;
@@ -166,8 +166,33 @@ public class SistemaRutaNorte {
             linea.insertarParada(parada, indice);
         }
     }
+
+    // Eliminar una parada de la linea por su indice
+    public void eliminarParadaDeLinea(String nombreLinea, int indice) {
+        Linea linea = lineas.get(nombreLinea);
+        if (linea == null) {
+            System.out.println("La línea " + nombreLinea + " no existe.");
+        } else {
+            linea.eliminarParada(indice);
+        }
+    }
     
-    ///public void eliminarParadaDeLinea() {}
+    // Recuperar el recorrido anterior
+    public void deshacerCambioEnLinea(String nombreLinea) {
+        Linea linea = lineas.get(nombreLinea);
+        if (linea == null) {
+            System.out.println("La línea " + nombreLinea + " no existe.");
+        } else {
+            linea.deshacerUltimoCambio();
+        }
+    }
+
+    // Los datos iniciales son el punto de partida
+    public void finalizarCargaInicial(){
+        for (Linea linea : lineas.values()) {
+            linea.limpiarHistorial();
+        }
+    }
 
     public void mostrarRecorridoLinea(String nombreLinea) {
         Linea linea = lineas.get(nombreLinea);
