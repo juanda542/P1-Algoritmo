@@ -11,7 +11,7 @@ public class Linea {
     public Linea (String nombre){
         this.nombre = nombre;
         this.paradas = new LinkedList<>();
-        this.historialCambios = new Stack<>(); // <-- ¡Faltaba inicializar esto!
+        this.historialCambios = new Stack<>(); 
     }
 
      public String getNombre() {
