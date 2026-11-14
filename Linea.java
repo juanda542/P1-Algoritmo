@@ -33,14 +33,14 @@ public class Linea {
     }
 
     //Eliminar parada por su índice
-    public Parada eliminarParada(int indice) {
+public Parada eliminarParada(int indice) {
         if (indice >= 0 && indice < paradas.size()) {
             Parada eliminada = paradas.remove(indice);
             historial.push(new Cambio("ELIMINAR", eliminada, indice));
             System.out.println("Parada "+ eliminada.getNombre() + " eliminada de la línea " + nombre);
             return eliminada;
         } else {
-            System.out.println("Índice inválido.");
+            System.out.println("-> Índice inválido.");
             return null;
         }
     }

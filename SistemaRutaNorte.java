@@ -203,5 +203,25 @@ public class SistemaRutaNorte {
         }
     }
 
+    // Eliminar parada de una línea por índice
+    public void eliminarParadaDeLinea(String nombreLinea, int indice) {
+        Linea linea = lineas.get(nombreLinea);
+        if (linea == null) {
+            System.out.println("La línea " + nombreLinea + " no existe.");
+        } else {
+            linea.eliminarParada(indice);
+        }
+    }
+
+    // Deshacer el último cambio de una línea usando la Pila
+    public void deshacerCambioEnLinea(String nombreLinea) {
+        Linea linea = lineas.get(nombreLinea);
+        if (linea == null) {
+            System.out.println("La línea " + nombreLinea + " no existe.");
+        } else {
+            linea.deshacerCambio(this.paradas);
+        }
+    }
+
     
     }
