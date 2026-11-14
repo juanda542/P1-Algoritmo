@@ -1,4 +1,7 @@
 import java.util.LinkedList;
+import java.util.Stack;
+import java.util.HashMap;
+
 public class Linea {
     private String nombre;
     private LinkedList<Parada> paradas;
