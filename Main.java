@@ -4,7 +4,56 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
+        
+        SistemaRutaNorte sistema = new SistemaRutaNorte();
 
+        // Paradas
+        String[][] datos = {
+            {"P0","Terminal Norte"},{"P1","Plaza Colón"},{"P2","Hospital"},
+            {"P3","Universidad"},{"P4","Mercado"},{"P5","Estadio"},
+            {"P6","Aeropuerto"},{"P7","Costanera"},{"P8","Cuartel"},
+            {"P9","Playa Chinchorro"},{"P10","Terminal Agro"},{"P11","Poblado"}
+        };
+
+        // Líneas
+        sistema.registrarLinea("L0");
+        sistema.registrarLinea("L1");
+        sistema.registrarLinea("L2"); // quedara vacía
+
+        sistema.agregarParadaALinea("L0", "P0");
+        sistema.agregarParadaALinea("L0", "P1");
+        sistema.agregarParadaALinea("L0", "P2");
+        sistema.agregarParadaALinea("L0", "P3");
+        sistema.agregarParadaALinea("L0", "P4");
+        
+        sistema.agregarParadaALinea("L1", "P5");
+        sistema.agregarParadaALinea("L1", "P6");
+        sistema.agregarParadaALinea("L1", "P7");
+        sistema.agregarParadaALinea("L1", "P8");
+
+        // Tarjetas
+        crearTarjeta("T0");
+        cargarSaldoTarjeta("T0",1600);
+
+        crearTarjeta("T1");
+        cargarSaldoTarjeta("T2", 800); // Saldo justo
+
+        crearTarjeta("T3");  // Saldo insuficiente
+        
+        // Buses
+        
+        encolarBus("AB1234");
+        encolarBus("CD5678");
+        encolarBus("EF9012");
+        encolarBus("GH3456");
+
+        // Subidas
+        sistema.subirParada("T0", "P0");
+        sistema.subirParada("T0", "P1");
+        sistema.subirParada("T1", "P2");
+
+        sistema.finalizarCargaInicial();
+        
         Scanner sc = new Scanner(System.in);
 
         SistemaRutaNorte sistema = new SistemaRutaNorte();
