@@ -110,7 +110,7 @@ public class Main {
                 System.out.print("Nombre de la línea: ");
                 String nombreDeshacer = sc.next();
 
-                sistema.deshacerCambioLinea(nombreDeshacer);
+                sistema.deshacerCambioEnLinea(nombreDeshacer);
                 break;
             case 9:
                 System.out.print("Ingrese patente del bus: ");
