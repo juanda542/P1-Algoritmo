@@ -14,7 +14,12 @@ public class Main {
             {"P6","Aeropuerto"},{"P7","Costanera"},{"P8","Cuartel"},
             {"P9","Playa Chinchorro"},{"P10","Terminal Agro"},{"P11","Poblado"}
         };
+        
+        for (String[] d : datos) {
 
+            registrarParada(d[0], d[1]);
+        }
+        
         // Líneas
         sistema.registrarLinea("L0");
         sistema.registrarLinea("L1");
@@ -36,9 +41,9 @@ public class Main {
         cargarSaldoTarjeta("T0",1600);
 
         crearTarjeta("T1");
-        cargarSaldoTarjeta("T2", 800); // Saldo justo
+        cargarSaldoTarjeta("T1", 800); // Saldo justo
 
-        crearTarjeta("T3");  // Saldo insuficiente
+        crearTarjeta("T2");  // Saldo insuficiente
         
         // Buses
         
@@ -55,8 +60,6 @@ public class Main {
         sistema.finalizarCargaInicial();
         
         Scanner sc = new Scanner(System.in);
-
-        SistemaRutaNorte sistema = new SistemaRutaNorte();
          
         int opcion = -1;
 
