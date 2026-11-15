@@ -37,20 +37,20 @@ public class Main {
         sistema.agregarParadaALinea("L1", "P8");
 
         // Tarjetas
-        crearTarjeta("T0");
-        cargarSaldoTarjeta("T0",1600);
+        sistema.crearTarjeta("T0");
+        sistema.cargarSaldoTarjeta("T0",1600);
 
-        crearTarjeta("T1");
-        cargarSaldoTarjeta("T1", 800); // Saldo justo
+        sistema.crearTarjeta("T1");
+        sistema.cargarSaldoTarjeta("T1", 800); // Saldo justo
 
-        crearTarjeta("T2");  // Saldo insuficiente
+        sistema.crearTarjeta("T2");  // Saldo insuficiente
         
         // Buses
         
-        encolarBus("AB1234");
-        encolarBus("CD5678");
-        encolarBus("EF9012");
-        encolarBus("GH3456");
+        sistema.encolarBus("AB1234");
+        sistema.encolarBus("CD5678");
+        sistema.encolarBus("EF9012");
+        sistema.encolarBus("GH3456");
 
         // Subidas
         sistema.subirParada("T0", "P0");
