@@ -17,7 +17,7 @@ public class Main {
         
         for (String[] d : datos) {
 
-            registrarParada(d[0], d[1]);
+            sistema.registrarParada(d[0], d[1]);
         }
         
         // Líneas
