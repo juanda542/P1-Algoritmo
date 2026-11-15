@@ -74,12 +74,13 @@ public class Main {
             System.out.println("6. Insertar parada en línea");
             System.out.println("7. Eliminar parada de línea");
             System.out.println("8. Deshacer cambio en línea");
-            System.out.println("9. Ingresar bus al terminal");
-            System.out.println("10. Despachar bus");
-            System.out.println("11. Crear tarjeta");
-            System.out.println("12. Cargar saldo");
-            System.out.println("13. Consultar saldo");
-            System.out.println("14. Pagar pasaje");
+            System.out.println("9. Mostrar recorrido de línea");
+            System.out.println("10. Ingresar bus al terminal");
+            System.out.println("11. Despachar bus");
+            System.out.println("12. Crear tarjeta");
+            System.out.println("13. Cargar saldo");
+            System.out.println("14. Consultar saldo");
+            System.out.println("15. Pagar pasaje");
             System.out.println("0. Salir");
 
         System.out.print("Seleccione una opción: ");
@@ -165,21 +166,28 @@ public class Main {
                 sistema.deshacerCambioEnLinea(nombreDeshacer);
                 break;
             case 9:
+
+                System.out.print("Nombre de la línea: ");
+                String nombreMostrar = sc.next();
+                sistema.mostrarRecorridoLinea(nombreMostrar);
+                break;
+
+            case 10:
                 System.out.print("Ingrese patente del bus: ");
                 String patente = sc.next();
 
                 sistema.encolarBus(patente);
                 break;
-            case 10:
+            case 11:
                 sistema.desencolarBus();
                 break;
-            case 11:
+            case 12:
                 System.out.print("Ingrese ID de la tarjeta: ");
                 String id = sc.next();
 
                 sistema.crearTarjeta(id);
                 break;
-            case 12:
+            case 13:
                 System.out.print("Ingrese ID de la tarjeta: ");
                 String idTarjeta = sc.next();
 
@@ -188,13 +196,13 @@ public class Main {
 
                 sistema.cargarSaldoTarjeta(idTarjeta, monto);
                 break;
-            case 13:
+            case 14:
                 System.out.print("Ingrese ID de la tarjeta: ");
                 String idConsulta = sc.next();
 
                 sistema.consultarSaldoTarjeta(idConsulta);
                 break;
-            case 14:
+            case 15:
                 System.out.print("Ingrese ID de la tarjeta: ");
                 String idPago = sc.next();
 
