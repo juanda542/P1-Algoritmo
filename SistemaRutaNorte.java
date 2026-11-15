@@ -203,17 +203,5 @@ public class SistemaRutaNorte {
         }
     }
 
-
-
-    // Deshacer el último cambio de una línea usando la Pila
-    public void deshacerCambioEnLinea(String nombreLinea) {
-        Linea linea = lineas.get(nombreLinea);
-        if (linea == null) {
-            System.out.println("La línea " + nombreLinea + " no existe.");
-        } else {
-            linea.deshacerCambio(this.paradas);
-        }
-    }
-
     
     }
